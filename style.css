@@ -1,0 +1,1074 @@
+/* ==============================
+   FONTS
+   ============================== */
+
+/* Poppins Light (buat paragraf) */
+@font-face {
+  font-family: 'PoppinsCustom';
+  src: url('assets/fonts/Poppins/Poppins-Light.ttf') format('truetype'); /* cek nama file kalau beda */
+  font-weight: 300;
+}
+
+/* Poppins Regular */
+@font-face {
+  font-family: 'PoppinsCustom';
+  src: url('assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+/* Poppins Bold */
+@font-face {
+  font-family: 'PoppinsCustom';
+  src: url('assets/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+/* Roca Two untuk heading */
+@font-face {
+  font-family: 'RocaTwoCustom';
+  src: url('assets/fonts/fonnts.com-Roca_Two_Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+/* Slight untuk script "Citate Tools" */
+@font-face {
+  font-family: 'SlightScript';
+  src: url('assets/fonts/Slight_Font/Slight (c) Up Up Creative/Slight.otf')
+    format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ==============================
+   BODY TEXT / PARAGRAPHS (POPPINS LIGHT)
+   ============================== */
+
+p,
+.page-subtext,
+.home-hero-text,
+.tools-col-text,
+.tools-section-text,
+.history-text,
+.bookmark-text,
+.bookmark-meta,
+.history-meta,
+.result-helper {
+  font-family: 'PoppinsCustom', 'Poppins', sans-serif;
+  font-weight: 300;  /* pakai Poppins-Light */
+}
+
+/* CSS variables global */
+:root {
+  --sidebar-width: 300px;
+  --sidebar-collapsed-width: 120px;
+
+  --nav-font-size: 20px;      /* ukuran teks menu sidebar */
+  --nav-icon-size: 40px;      /* ukuran icon sidebar */
+
+  --home-font-size: 18px;     /* paragraf di home */
+  --home-logo-max: 480px;     /* max lebar logo CiteScraper di home */
+
+  --radius-sidebar: 48px;
+}
+
+/* GLOBAL DEFAULT FONT */
+html,
+body {
+  font-family: 'PoppinsCustom', 'Poppins', sans-serif !important;
+}
+
+/* ==============================
+   THEME VARIABLES
+   ============================== */
+body.theme-light {
+  --bg-body: #f5f5f5;
+  --bg-main-gradient: linear-gradient(to bottom, #f8f8f8 0%, #d8d8d8 100%);
+  --bg-main-gradient-dark: linear-gradient(to bottom, #f5f8ff 0%, #e1e7ff 55%, #cfd5e8 100%);
+
+  --sidebar-bg: #ffffff;
+  --sidebar-rail-bg: #f5f5f5;
+
+  --card-bg: #ffffff;
+  --card-border: #dddddd;
+
+  --text-main: #333333;
+  --text-muted: #97989e;
+  --text-soft: #9ca3af;
+  --text-invert: #ffffff;
+
+  --accent: #2f80ff;
+  --accent-strong: #1462e0;
+  --accent-soft: #e1ecff;
+
+  --danger: #e63946;
+  --danger-soft: #fde7ea;
+}
+
+body.theme-dark {
+  --bg-body: #050608;
+  --bg-main-gradient: linear-gradient(to bottom, #050608 0%, #0040a8 100%);
+  --bg-main-gradient-dark: linear-gradient(135deg, #050608 0%, #0a1630 40%, #003b9c 100%);
+
+  --sidebar-bg: #161923;
+  --sidebar-rail-bg: #10131a;
+
+  --card-bg: #050608;
+  --card-border: #27324b;
+
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --text-soft: #6b7280;
+  --text-invert: #050608;
+
+  --accent: #2f80ff;
+  --accent-strong: #51a2ff;
+  --accent-soft: rgba(47, 128, 255, 0.18);
+
+  --danger: #fb7185;
+  --danger-soft: rgba(248, 113, 113, 0.15);
+}
+
+/* ==============================
+   RESET BASICS
+   ============================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'PoppinsCustom', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-body);
+  color: var(--text-main);
+}
+
+/* ==============================
+   LAYOUT: APP SHELL
+   ============================== */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-body);
+}
+.app-container {
+  background: transparent; /* biar ngikut warna body */
+}
+
+/* ==============================
+   SIDEBAR (RAIL + PANEL)
+   ============================== */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  border-radius: 0 var(--radius-sidebar) var(--radius-sidebar) 0;
+  box-shadow: 0 0 12px rgba(0,0,0,0.18);
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.22s ease-out;
+}
+
+.sidebar.is-collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+/* inner */
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* collapse toggle (hamburger di pojok bawah sidebar) */
+.collapse-toggle,
+.collapse-toggle-link {
+  align-self: flex-end;          /* dorong ke kanan */
+  margin: 4px 4px 18px auto;     /* posisi kanan atas sidebar */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+
+.collapse-bar {
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: #b3b3b3;
+}
+
+/* NAV LIST */
+.nav-main {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* item utama */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: var(--nav-font-size);   /* pakai variable */
+  transition: background 0.18s ease-out, color 0.18s ease-out, transform 0.18s ease-out;
+}
+
+.nav-item:hover {
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+/* kotak icon sidebar – BENER² transparan */
+.nav-icon {
+    width: var(--nav-icon-size);
+    height: var(--nav-icon-size);
+    flex-shrink: 0;
+    background: transparent !important;   /* <– ini yang penting */
+    border: none;
+    box-shadow: none;
+}
+
+.nav-icon-wrapper {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* item yang lagi aktif (Home, Citate Tools, History, Themes, Bookmarks) */
+.nav-item.is-active {
+  background: transparent !important;   /* pill biru muda */
+  color: var(--accent);             /* teks jadi biru */
+}
+
+/* jangan kasih background ke icon saat active */
+.nav-item.is-active .nav-icon {
+    background: transparent !important;
+}
+
+/* label */
+.nav-label {
+  white-space: nowrap;
+}
+
+/* chevron */
+.nav-chevron {
+  margin-left: auto;
+  font-size: 11px;
+}
+
+/* collapsed: hanya icon */
+.sidebar.is-collapsed .nav-label,
+.sidebar.is-collapsed .nav-chevron,
+.sidebar.is-collapsed .submenu {
+  display: none !important;
+}
+
+/* group + submenu */
+.nav-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu {
+  margin-left: 34px;
+  margin-top: 4px;
+  display: none;
+}
+
+.submenu.is-open {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.submenu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.submenu-item:hover {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.submenu-item.is-active {
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.submenu-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.submenu-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: transparent;
+}
+
+.submenu-item.is-active .submenu-dot {
+  background: var(--accent);
+}
+
+.nav-icon img,
+.submenu-icon img {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    background: transparent !important;
+}
+
+.app-shell {
+  background: var(--bg-body) !important;
+}
+
+/* ==============================
+   CONTENT AREA
+   ============================== */
+.content {
+  flex: 1;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  background: transparent;
+}
+/* HOME: full-bleed, tanpa kotak abu di belakang */
+.content-home {
+  padding: 0;           /* hapus jarak kiri/kanan/atas/bawah */
+}
+
+/* pastikan gradient-nya yang nempel langsung ke area konten */
+.home-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #f5f5f5 0%, #f5f5f5 80%, #1d6dff 100%);
+}
+
+/* versi dark */
+body.theme-dark .home-page {
+  background: linear-gradient(to bottom, #050608 0%, #050608 50%, #003b9c 100%, #000000 100%);
+}
+
+
+/* ==============================
+   HOME PAGE (HERO)
+   ============================== */
+/* LIGHT THEME – biru halus seperti dark theme */
+.home-page {
+  background: linear-gradient(to bottom,
+    #f5f5f5 0%,
+    #f5f5f5 65%,
+    #1d6dff 100%
+  );
+}
+
+/* versi dark */
+body.theme-dark .home-page {
+  background: linear-gradient(to bottom, #050608 0%, #050608 50%, #003b9c 100%, #000000 100%);
+}
+
+.home-hero-card {
+  width: 100%;
+  max-width: 1100px;
+  padding: 50px 90px 70px;
+  text-align: center;
+  /* transparan: tidak ada kotak putih lagi */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+body.theme-dark .home-hero-card {
+  background: transparent;
+}
+
+.home-logo-main {
+  max-width: var(--home-logo-max);   /* bisa kamu ubah di :root */
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.home-hero-text {
+  font-size: var(--home-font-size);  /* pakai variable */
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0 0 40px;
+}
+
+.home-cta-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* NOTE: tombol besar utama (Citate Now, Create/Convert Citation) */
+.btn-cta,
+.btn.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 46px;          /* <- gedein di sini */
+  border-radius: 999px;
+  background: linear-gradient(to bottom, #2f80ff, #1462e0);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;             /* <- font tombol */
+  font-weight: 600;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+  border: none;
+  cursor: pointer;
+}
+
+
+
+/* ==============================
+   CITATIONTOOLS PAGE
+   ============================== */
+/* ==============================
+   CITATE TOOLS LANDING
+   ============================== */
+
+/* ==============================
+   CITATE TOOLS LANDING
+   ============================== */
+
+/* default = DARK THEME LOOK */
+.tools-landing {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 70px 80px 90px;
+  background: linear-gradient(to bottom,
+    #050608 0%,
+    #050608 40%,
+    #003b9c 80%,
+    #000000 100%
+  );
+}
+
+/* TITLE Citate Tools */
+.tools-heading {
+  margin-bottom: 40px;
+}
+
+.tools-script-title {
+  margin: 0;
+  font-family: 'SlightScript', 'PoppinsCustom', system-ui, sans-serif;
+  font-size: 52px;           /* <--- kalau mau lebih gede, naikkan angka ini */
+  font-weight: 400;
+  color: #e5e7eb;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
+/* versi light: warna lebih gelap */
+body.theme-light .tools-script-title {
+  color: #4b5563;
+}
+/* DUA KOLOM KONTEN */
+.tools-columns {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: flex-start;                /* jarak antar kolom */
+}
+
+.tools-col {
+  flex: 1;
+}
+
+/* kiri: rata kiri penuh */
+.tools-col-left {
+  text-align: left;
+  max-width: 520px;
+  padding-right: 40px;
+}
+.tools-col-left .tools-col-title,
+.tools-col-left .tools-col-text {
+  text-align: left;
+}
+/* kanan: rata kanan penuh */
+.tools-col-right {
+  text-align: right;
+  max-width: 520px;
+  padding-left: 40px;
+}
+.tools-col-right .tools-col-title,
+.tools-col-right .tools-col-text {
+  text-align: right;
+}
+
+/* paragraf */
+.tools-col-title {
+  margin: 0 0 14px;
+  font-family: 'RocaTwoCustom','PoppinsCustom',sans-serif;
+  font-size: 24px;
+}
+.tools-col-text {
+  margin: 0 0 30px;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+/* warna text: dark vs light */
+body.theme-dark .tools-col-title { color: #e5e7eb; }
+body.theme-dark .tools-col-text  { color: #d1d5db; }
+body.theme-light .tools-col-title{ color: #1f2933; }
+body.theme-light .tools-col-text { color: #4b5563; }
+
+/* tombol sejajar satu garis horizontal */
+.tools-col-cta {
+  display: flex;
+  margin-top: 10px;
+}
+.tools-col-left  .tools-col-cta { justify-content: flex-start; }
+.tools-col-right .tools-col-cta { justify-content: flex-end; }
+
+/* RESPONSIVE – kalau layar kecil, kolom jadi vertikal */
+@media (max-width: 1024px) {
+  .tools-landing {
+    padding: 60px 30px 80px;
+  }
+
+  .tools-columns {
+    flex-direction: column;
+    gap: 50px;
+  }
+ }
+  .tools-col-left,
+  .tools-col-right {
+    max-width: 640px;
+    padding: 0;
+    text-align: left;
+  }
+  .tools-col-right .tools-col-text {
+    text-align: left;
+  }
+  .tools-col-cta {
+    justify-content: center !important;
+  }
+
+/* ==============================
+   GENERIC PAGE WRAPPER (Create / Convert / History / Bookmarks)
+   ============================== */
+.page-wrapper {
+  flex: 1;
+  padding: 40px 80px 60px;   /* kamu boleh atur tinggi/lebarnya di sini */
+  background: transparent;   /* NO kotak / card */
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.page-header {
+  margin-bottom: 16px;
+}
+
+.page-title {
+  margin: 0;
+  font-family: 'Poppins-Bold', Poppins, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.page-subtext {
+  margin: 6px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.page-subtext.small {
+  font-size: 11px;
+}
+
+/* ==============================
+   FORM STYLES
+   ============================== */
+/* ==============================
+   FORM STYLES
+   ============================== */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 900px;   /* kalau mau lebih lebar, gedein angka ini */
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+
+/* row penuh – tetap kepakai kalau ada */
+.form-row-full {
+  width: 100%;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+input[type="text"],
+select,
+.textarea {
+  border-radius: 12px;
+  padding: 9px 11px;
+  border: 1px solid #cbd5e1;
+  background: #f9fafb;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+body.theme-dark input[type="text"],
+body.theme-dark select,
+body.theme-dark .textarea {
+  background: #050608;
+  border-color: #27324b;
+  color: var(--text-main);
+}
+
+input[type="text"]:focus,
+select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+textarea.textarea {
+  resize: vertical;
+}
+
+/* Semua action bar form ditengah */
+.form-actions,
+.create-page .form-actions,
+.convert-page .form-actions,
+.bookmarks-page .form-actions,
+.history-actions {
+    width: 100%;
+    max-width: 960px;
+    margin: 32px 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* kalau ada margin bawah biar ga nempel elemen setelahnya */
+.form-actions,
+.bookmarks-page .form-actions {
+  margin: 16px 0 24px;
+}
+
+/* CENTER semua tombol aksi di form create / convert / bookmarks */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 24px 0;            /* jarak atas & bawah tombol */
+}
+
+
+/* Buttons */
+.btn {
+  border-radius: 999px;
+  border: none;
+  padding: 7px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+
+.btn.danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.btn.small {
+  padding: 5px 12px;
+  font-size: 11px;
+}
+/* tombol add di bookmarks/history pakai ukuran sama tapi sedikit lebih kecil */
+.bookmark-list .btn,
+.history-actions .btn,
+form .btn {
+  padding: 10px 26px;
+  font-size: 14px;
+}
+
+
+/* ==============================
+   RESULT BLOCK
+   ============================== */
+.result-card {
+  margin-top: 16px;
+  padding: 12px 14px 14px;
+  border-radius: 18px;
+  border: 1px dashed #cbd5e1;
+  background: #f5f7fb;
+}
+
+body.theme-dark .result-card {
+  border-color: #27324b;
+  background: #050608;
+}
+
+.result-title {
+  margin: 0 0 4px;
+  font-size: 13px;
+}
+
+.result-helper {
+  margin: 0 0 8px;
+  font-size: 11px;
+  color: var(--text-soft);
+}
+
+.result-textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px dashed #cbd5e1;
+  background: transparent;
+  padding: 8px 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 12px;
+}
+
+/* ==============================
+   ALERT
+   ============================== */
+.alert {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.alert-error {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+/* ==============================
+   HISTORY & BOOKMARKS
+   ============================== */
+.history-actions {
+  margin-bottom: 10px;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card {
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  padding: 10px 12px;
+}
+
+.card-empty {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.history-text {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.history-meta {
+  font-size: 11px;
+  color: var(--text-soft);
+}
+
+.history-actions-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.copy-hint {
+  font-size: 10px;
+  color: var(--text-soft);
+}
+
+.bookmark-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bookmark-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bookmark-text {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.bookmark-meta {
+  font-size: 11px;
+  color: var(--text-soft);
+}
+/* NOTE: jarak tambahan di bawah tombol Add di bookmarks */
+.bookmarks-page .form-actions {
+  margin-bottom: 20px;
+}
+
+/* ==============================
+   CITATE TOOLS LANDING
+   ============================== */
+
+.tools-landing {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 70px 80px 90px;
+  /* gradient mirip home dark */
+  background: linear-gradient(to bottom, #050608 0%, #050608 50%, #003b9c 100%, #000000 100%);
+}
+
+body.theme-light .tools-landing {
+  background: linear-gradient(to bottom,
+    #f5f5f5 0%,
+    #f5f5f5 55%,
+    #1d6dff 100%
+  );
+}
+
+/* TITLE Citate Tools */
+.tools-heading {
+  margin-bottom: 40px;
+}
+
+.tools-script-title {
+  margin: 0;
+  font-family: 'SlightScript', 'PoppinsCustom', system-ui, sans-serif;
+  font-size: 52px;           /* <--- kalau mau lebih gede, naikkan angka ini */
+  font-weight: 400;
+  color: #e5e7eb;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
+/* DUA KOLOM KONTEN */
+.tools-columns {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 80px;                 /* jarak antar kolom */
+}
+
+.tools-col {
+  flex: 1;
+  max-width: 480px;
+}
+
+.tools-col-title {
+  margin: 0 0 14px;
+  font-family: 'RocaTwoCustom', system-ui, sans-serif;
+  font-size: 24px;           /* judul "Create/Convert Citation" */
+  color: #e5e7eb;
+}
+
+.tools-col-text {
+  margin: 0 0 30px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #d1d5db;
+}
+
+/* CTA button di masing-masing kolom */
+.tools-col-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.tools-btn {
+  min-width: 230px;
+  text-align: center;
+}
+
+/* RESPONSIVE – kalau layar kecil, kolom jadi vertikal */
+@media (max-width: 1024px) {
+  .tools-landing {
+    padding: 60px 30px 80px;
+  }
+
+  .tools-columns {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .tools-col {
+    max-width: 640px;
+  }
+
+  .tools-col-cta {
+    justify-content: center;
+  }
+}
+
+/* BASE SECTION */
+.tools-section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 110px auto;
+}
+
+/* ===== CREATE (LEFT OFFSET TAPI NGGAK MEPET) ===== */
+.tools-section.tools-left {
+    text-align: left;
+    margin-left: 120px;     /* <<< geser dari kiri (atur angka sesuai selera) */
+}
+
+/* ===== CONVERT (RIGHT OFFSET TAPI TOMBOL TETAP CENTER) ===== */
+.tools-section.tools-right {
+    text-align: right;
+    margin-right: 120px;    /* <<< geser dari kanan */
+}
+
+/* Paragraf convert tetap kiri (sesuai permintaanmu) */
+.tools-section.tools-right .tools-section-text {
+    text-align: right;
+}
+
+/* ===== BUTTON SELALU DI TENGAH ===== */
+.tools-btn-wrapper {
+    display: flex;
+    justify-content: center !important; 
+    margin-top: 20px;
+}
+
+/* ===== OFFSET RULES ===== */
+
+/* CREATE = LEFT OFFSET */
+.tools-section.tools-left {
+  margin-left: 0;               /* menempel ke kiri */
+  text-align: left;             /* title & paragraf rata kiri */
+}
+
+/* CONVERT = RIGHT OFFSET */
+.tools-section.tools-right {
+  margin-left: auto;            /* dorong ke kanan */
+  margin-right: 0;
+  text-align: right;            /* judul rata kanan */
+}
+
+/* OPTIONAL: paragraf convert tetap kiri walau judul kanan */
+.tools-section.tools-right .tools-section-text {
+  text-align: left;              /* kalau kamu mau paragraf tetap kiri */
+  /* Kalau mau paragraf rata kanan juga => ganti "left" jadi "right" */
+}
+
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 960px) {
+  .tools-page {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 840px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .sidebar,
+  .sidebar.is-collapsed {
+    width: 100%;
+    border-radius: 0 0 32px 32px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .home-hero-card {
+    width: 100%;
+    padding: 30px 22px 40px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Citation Styles page */
+.styles-section {
+  margin-bottom: 28px;
+}
+
+.styles-heading {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.styles-body {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
