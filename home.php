@@ -10,8 +10,7 @@
         <p class="home-hero-text">
             CiteScraper is a modern, intuitive citation platform designed to help students, researchers, and
             academic writers generate and convert references effortlessly. Built to support multiple
-            international citation styles including IEEE, APA, MLA, Chicago, Harvard, AMA, CSE, Bluebook,
-            and Mendeley format, CiteScraper makes academic formatting fast, accurate, and stress-free.
+            international citation styles including IEEE, APA, MLA, Chicago, Harvard, AMA, CSE, and Bluebook, CiteScraper makes academic formatting fast, accurate, and stress-free.
             CiteScraper is built for productivity, precision, and creative academic workflow, allowing you
             to build your citations high and strong like a skyscraper.
         </p>
