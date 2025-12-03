@@ -13,7 +13,7 @@ $volume  = $_POST['volume']  ?? '';
 $number  = $_POST['number']  ?? '';
 $pages   = $_POST['pages']   ?? '';
 $year    = $_POST['year']    ?? '';
-$url     = $_POST['url']     ?? '';   // NEW: URL online (optional)
+$url     = $_POST['url']     ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
     $author  = trim($author);
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
     $number  = trim($number);
     $pages   = trim($pages);
     $year    = trim($year);
-    $url     = trim($url);    // NEW
+    $url     = trim($url); 
     $style   = trim($style);
 
     if ($author === '' || $title === '' || $journal === '' || $year === '') {
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
             'number'  => $number,
             'pages'   => $pages,
             'year'    => $year,
-            'url'     => $url,   // NEW: simpan url di meta
+            'url'     => $url,
             'source'  => 'create',
         ]);
     }
@@ -135,7 +135,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
                 <option value="ama"      <?php echo $style === 'ama' ? 'selected' : ''; ?>>AMA (American Medical Association)</option>
                 <option value="cse"      <?php echo $style === 'cse' ? 'selected' : ''; ?>>CSE (Council of Science Editors)</option>
                 <option value="bluebook" <?php echo $style === 'bluebook' ? 'selected' : ''; ?>>Bluebook</option>
-                <option value="mendeley" <?php echo $style === 'mendeley' ? 'selected' : ''; ?>>Mendeley</option>
             </select>
         </div>
 
