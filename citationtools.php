@@ -1,5 +1,5 @@
 <?php
-// citationtools.php – landing khusus Citate Tools (2 kolom seperti sketch)
+// citationtools.php
 ?>
 <div class="tools-landing">
 
@@ -35,7 +35,7 @@
             Convert Citation allows users to transform an existing citation into a different citation style
  without rewriting it from scratch. Users simply paste any completed reference, and the system
  analyzes and reformats it according to the chosen academic style. Whether converting from
- APA to IEEE or from Mendeley format to Chicago style, this tool ensures accuracy and
+ APA to IEEE or from CSE format to Chicago style, this tool ensures accuracy and
  consistency across documents, supporting seamless formatting transitions for professional
  papers, reports, and research publishing.
         </p>
@@ -47,5 +47,4 @@
             </a>
         </div>
     </section>
-
 </div>
