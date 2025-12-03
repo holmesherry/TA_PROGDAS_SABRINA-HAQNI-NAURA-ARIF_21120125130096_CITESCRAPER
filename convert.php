@@ -68,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['convert'])) {
                 <option value="ama"      <?php echo $current === 'ama' ? 'selected' : ''; ?>>AMA (American Medical Associaton)</option>
                 <option value="cse"      <?php echo $current === 'cse' ? 'selected' : ''; ?>>CSE (Council Science Editors)</option>
                 <option value="bluebook" <?php echo $current === 'bluebook' ? 'selected' : ''; ?>>Bluebook</option>
-                <option value="mendeley" <?php echo $current === 'mendeley' ? 'selected' : ''; ?>>Mendeley</option>
             </select>
         </div>
 
@@ -83,7 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['convert'])) {
                 <option value="ama"      <?php echo $target === 'ama' ? 'selected' : ''; ?>>AMA (American Medical Association)</option>
                 <option value="cse"      <?php echo $target === 'cse' ? 'selected' : ''; ?>>CSE (Council of Science Editors)</option>
                 <option value="bluebook" <?php echo $target === 'bluebook' ? 'selected' : ''; ?>>Bluebook</option>
-                <option value="mendeley" <?php echo $target === 'mendeley' ? 'selected' : ''; ?>>Mendeley</option>
             </select>
         </div>
 
