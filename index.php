@@ -1,6 +1,4 @@
 <?php
-// index.php – shell utama, NO JS
-
 session_start();
 require_once __DIR__ . '/core/functions.php';
 
@@ -210,7 +208,7 @@ $darkIconPath  = 'assets/icons/thememoon-' . ($darkActive ? 'active' : 'dark') .
                 </a>
 
                 <!-- HISTORY -->
-                <a href="<?php echo mklink(['page' => 'h    istory', 'menu' => null]); ?>"
+                <a href="<?php echo mklink(['page' => 'history', 'menu' => null]); ?>"
                    class="nav-item <?php echo $isHistory ? 'is-active' : ''; ?>">
                     <img class="nav-icon"
                          src="<?php echo e(icon_src('history', $isHistory, $theme)); ?>"
@@ -265,9 +263,6 @@ $darkIconPath  = 'assets/icons/thememoon-' . ($darkActive ? 'active' : 'dark') .
         include __DIR__ . '/' . $page . '.php';
         ?>
     </main>
-
-
 </div>
-
 </body>
 </html>
