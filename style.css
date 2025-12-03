@@ -167,8 +167,8 @@ body {
    ============================== */
 .sidebar {
   width: var(--sidebar-width);
-  background: var(--sidebar-bg);
-  border-radius: 0 var(--radius-sidebar) var(--radius-sidebar) 0;
+  background: var(--sidebar-bg) !important;
+  border-radius:  0;
   box-shadow: 0 0 12px rgba(0,0,0,0.18);
   padding: 14px 16px 18px;
   display: flex;
@@ -456,41 +456,6 @@ body.theme-dark .home-hero-card {
    CITATE TOOLS LANDING
    ============================== */
 
-/* ==============================
-   CITATE TOOLS LANDING
-   ============================== */
-
-/* default = DARK THEME LOOK */
-.tools-landing {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 70px 80px 90px;
-  background: linear-gradient(to bottom,
-    #050608 0%,
-    #050608 40%,
-    #003b9c 80%,
-    #000000 100%
-  );
-}
-
-/* TITLE Citate Tools */
-.tools-heading {
-  margin-bottom: 40px;
-}
-
-.tools-script-title {
-  margin: 0;
-  font-family: 'SlightScript', 'PoppinsCustom', system-ui, sans-serif;
-  font-size: 52px;           /* <--- kalau mau lebih gede, naikkan angka ini */
-  font-weight: 400;
-  color: #e5e7eb;
-  letter-spacing: 0.12em;
-  text-align: center;
-}
-
 /* versi light: warna lebih gelap */
 body.theme-light .tools-script-title {
   color: #4b5563;
@@ -771,6 +736,12 @@ body.theme-dark .result-card {
   padding: 8px 10px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   font-size: 12px;
+  color: var(--text-main);
+}
+
+body.theme-dark .result-textarea {
+  border-color: #27324b;
+  color: var(--text-main);      /* optional, biar jelas aja */
 }
 
 /* ==============================
@@ -982,12 +953,6 @@ body.theme-light .tools-landing {
     margin-left: 120px;     /* <<< geser dari kiri (atur angka sesuai selera) */
 }
 
-/* ===== CONVERT (RIGHT OFFSET TAPI TOMBOL TETAP CENTER) ===== */
-.tools-section.tools-right {
-    text-align: right;
-    margin-right: 120px;    /* <<< geser dari kanan */
-}
-
 /* Paragraf convert tetap kiri (sesuai permintaanmu) */
 .tools-section.tools-right .tools-section-text {
     text-align: right;
@@ -1010,15 +975,13 @@ body.theme-light .tools-landing {
 
 /* CONVERT = RIGHT OFFSET */
 .tools-section.tools-right {
-  margin-left: auto;            /* dorong ke kanan */
+  margin-left: auto;
   margin-right: 0;
-  text-align: right;            /* judul rata kanan */
+  text-align: right;
 }
 
-/* OPTIONAL: paragraf convert tetap kiri walau judul kanan */
 .tools-section.tools-right .tools-section-text {
-  text-align: left;              /* kalau kamu mau paragraf tetap kiri */
-  /* Kalau mau paragraf rata kanan juga => ganti "left" jadi "right" */
+  text-align: left;
 }
 
 
@@ -1071,4 +1034,19 @@ body.theme-light .tools-landing {
   margin: 0;
   font-size: 14px;
   line-height: 1.8;
+}
+
+/* === FINAL OVERRIDE: warna teks di textarea result === */
+.result-textarea {
+  color: var(--text-main) !important;
+  -webkit-text-fill-color: var(--text-main) !important; /* buat jaga-jaga Chrome/Safari */
+  background: transparent;
+}
+
+body.theme-dark .result-textarea {
+  background: #050608;
+}
+
+body.theme-light .result-textarea {
+  background: #f5f7fb;
 }
